@@ -17,11 +17,12 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
 
 //Keydown press java here
 document.addEventListener("keydown", function (event) {
-  makeSound(event.key);
+  var lowercaseKey = event.key.toLowerCase();
+  makeSound(lowercaseKey);
 });
 
 function makeSound(key) {
-  switch (buttonInnerHTML) {
+  switch (key) {
     case "w":
       var tom1 = new Audio("sounds/tom-1.mp3");
       tom1.play();
@@ -48,7 +49,7 @@ function makeSound(key) {
       break;
 
     case "k":
-      var snare = new Audio("sounds/crash.mp3");
+      var crash = new Audio("sounds/crash.mp3");
       crash.play();
       break;
 

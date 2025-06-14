@@ -7,6 +7,8 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
     var buttonInnerHTML = this.textContent;
 
     makeSound(buttonInnerHTML);
+
+    buttonAnimation(buttonInnerHTML);
     // var audio = new Audio("sounds/tom-1.mp3");
     //audio.play();
 
@@ -19,6 +21,7 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
 document.addEventListener("keydown", function (event) {
   var lowercaseKey = event.key.toLowerCase();
   makeSound(lowercaseKey);
+  buttonAnimation(event.key);
 });
 
 function makeSound(key) {
@@ -61,4 +64,12 @@ function makeSound(key) {
     default:
       console.log(buttonInnerHTML);
   }
+}
+
+function buttonAnimation(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+  setTimeout(function () {
+    activeButton.classList.remove("pressed");
+  }, 100);
 }
